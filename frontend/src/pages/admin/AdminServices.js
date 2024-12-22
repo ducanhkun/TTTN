@@ -17,7 +17,7 @@ const AdminServices = () => {
     // Lấy danh sách dịch vụ
     const fetchServices = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/services");
+            const response = await axios.get("http://localhost:3306/api/services");
             setServices(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách dịch vụ:", error);
@@ -31,11 +31,11 @@ const AdminServices = () => {
 
             if (editingService) {
                 // Sửa dịch vụ
-                await axios.put(`http://localhost:5000/api/services/${editingService.serviceId}`, serviceData);
+                await axios.put(`http://localhost:3306/api/services/${editingService.serviceId}`, serviceData);
                 message.success("Cập nhật dịch vụ thành công!");
             } else {
                 // Thêm mới dịch vụ
-                await axios.post("http://localhost:5000/api/services", serviceData);
+                await axios.post("http://localhost:3306/api/services", serviceData);
                 message.success("Thêm dịch vụ thành công!");
             }
 
@@ -53,7 +53,7 @@ const AdminServices = () => {
     // Xóa dịch vụ
     const handleDeleteService = async (serviceId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/services/${serviceId}`);
+            await axios.delete(`http://localhost:3306/api/services/${serviceId}`);
             message.success("Xóa dịch vụ thành công!");
             fetchServices();
         } catch (error) {
@@ -167,7 +167,7 @@ const AdminServices = () => {
                     <Form.Item name="serviceImage" label="Hình Ảnh">
                         <Upload
                             name="file"
-                            action="http://localhost:5000/api/upload"
+                            action="http://localhost:3306/api/upload"
                             listType="picture-card"
                             onChange={handleUpload}
                             showUploadList={false}

@@ -20,7 +20,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
         const file = req.file;
 
         // Đường dẫn URL cho file đã upload
-        const fileUrl = `http://localhost:${process.env.PORT || 5000}/uploads/${file.filename}`;
+        const fileUrl = `http://localhost:${process.env.PORT || 3306}/uploads/${file.filename}`;
         res.json({ url: fileUrl }); // Trả về URL để frontend sử dụng
     } catch (error) {
         console.error('Lỗi khi upload file:', error.message);
@@ -54,7 +54,7 @@ app.use('/api/users', userRoutes); // Thêm route users
 app.use('/api/service-details', serviceDetailRoutes);
 app.use('/api/news', newsRouter);
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3306;
 app.listen(PORT, () => {
     console.log(`Server đang chạy tại http://localhost:${PORT}`);
 });

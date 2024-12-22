@@ -13,7 +13,7 @@ const Login = () => {
     const handleLogin = async (values) => {
         setLoading(true);
         try {
-            const { data } = await axios.post("http://localhost:5000/api/customers/login", values);
+            const { data } = await axios.post("http://localhost:3306/api/customers/login", values);
             localStorage.setItem("customerId", data.customerId);
             localStorage.setItem("fullName", data.fullName);
             message.success("Đăng nhập thành công!");

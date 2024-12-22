@@ -17,7 +17,7 @@ const AdminUser = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/users");
+            const response = await axios.get("http://localhost:3306/api/users");
             setUsers(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách tài khoản:", error);
@@ -26,7 +26,7 @@ const AdminUser = () => {
 
     const fetchRoles = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/roles");
+            const response = await axios.get("http://localhost:3306/api/roles");
             setRoles(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách vai trò:", error);
@@ -36,10 +36,10 @@ const AdminUser = () => {
     const handleAddOrUpdateUser = async (values) => {
         try {
             if (editingUser) {
-                await axios.put(`http://localhost:5000/api/users/${editingUser.userId}`, values);
+                await axios.put(`http://localhost:3306/api/users/${editingUser.userId}`, values);
                 message.success("Cập nhật tài khoản thành công!");
             } else {
-                await axios.post("http://localhost:5000/api/users", values);
+                await axios.post("http://localhost:3306/api/users", values);
                 message.success("Thêm tài khoản thành công!");
             }
 
@@ -55,7 +55,7 @@ const AdminUser = () => {
 
     const handleDeleteUser = async (userId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/users/${userId}`);
+            await axios.delete(`http://localhost:3306/api/users/${userId}`);
             message.success("Xóa tài khoản thành công!");
             fetchUsers();
         } catch (error) {

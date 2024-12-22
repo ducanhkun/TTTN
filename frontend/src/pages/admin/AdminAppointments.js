@@ -29,7 +29,7 @@ const AdminAppointments = () => {
 
     const fetchAppointments = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/appointments");
+            const response = await axios.get("http://localhost:3306/api/appointments");
             setAppointments(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách lịch hẹn:", error);
@@ -38,7 +38,7 @@ const AdminAppointments = () => {
 
     const fetchServices = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/services");
+            const response = await axios.get("http://localhost:3306/api/services");
             setServices(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách dịch vụ:", error);
@@ -47,7 +47,7 @@ const AdminAppointments = () => {
 
     const fetchTimeSlots = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/time-slots");
+            const response = await axios.get("http://localhost:3306/api/time-slots");
             setTimeSlots(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách khung giờ:", error);
@@ -63,12 +63,12 @@ const AdminAppointments = () => {
 
             if (editingAppointment) {
                 await axios.put(
-                    `http://localhost:5000/api/appointments/${editingAppointment.appointmentId}`,
+                    `http://localhost:3306/api/appointments/${editingAppointment.appointmentId}`,
                     appointmentData
                 );
                 message.success("Cập nhật lịch hẹn thành công!");
             } else {
-                await axios.post("http://localhost:5000/api/appointments", appointmentData);
+                await axios.post("http://localhost:3306/api/appointments", appointmentData);
                 message.success("Thêm lịch hẹn thành công!");
             }
 
@@ -84,7 +84,7 @@ const AdminAppointments = () => {
 
     const handleDeleteAppointment = async (appointmentId) => {
         try {
-            await axios.delete(`http://localhost:5000/api/appointments/${appointmentId}`);
+            await axios.delete(`http://localhost:3306/api/appointments/${appointmentId}`);
             message.success("Xóa lịch hẹn thành công!");
             fetchAppointments();
         } catch (error) {
