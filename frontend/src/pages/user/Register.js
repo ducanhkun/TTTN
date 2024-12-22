@@ -14,7 +14,7 @@ const Register = () => {
     const handleRegister = async (values) => {
         setLoading(true);
         try {
-            await axios.post("http://localhost:3306/api/customers", values);
+            await axios.post("http://localhost:5000/api/customers", values);
             message.success("Đăng ký thành công! Hãy đăng nhập để tiếp tục.");
             navigate("/login");
         } catch (error) {

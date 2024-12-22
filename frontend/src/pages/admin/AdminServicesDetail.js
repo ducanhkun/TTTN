@@ -19,7 +19,7 @@ const AdminServicesDetail = () => {
     // Lấy danh sách chi tiết dịch vụ
     const fetchServiceDetails = async () => {
         try {
-            const response = await axios.get("http://localhost:3306/api/service-details");
+            const response = await axios.get("http://localhost:5000/api/service-details");
             setServiceDetails(response.data.data); 
         } catch (error) {
             console.error("Lỗi khi tải chi tiết dịch vụ:", error);
@@ -30,7 +30,7 @@ const AdminServicesDetail = () => {
     // Lấy danh sách dịch vụ
     const fetchServices = async () => {
         try {
-            const response = await axios.get("http://localhost:3306/api/services");
+            const response = await axios.get("http://localhost:5000/api/services");
             setServices(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách dịch vụ:", error);
@@ -44,10 +44,10 @@ const AdminServicesDetail = () => {
 
         try {
             if (editingDetail) {
-                await axios.put(`http://localhost:3306/api/service-details/${editingDetail.detailId}`, detailData);
+                await axios.put(`http://localhost:5000/api/service-details/${editingDetail.detailId}`, detailData);
                 message.success("Cập nhật chi tiết dịch vụ thành công!");
             } else {
-                await axios.post("http://localhost:3306/api/service-details", detailData);
+                await axios.post("http://localhost:5000/api/service-details", detailData);
                 message.success("Thêm chi tiết dịch vụ thành công!");
             }
             fetchServiceDetails();
@@ -61,7 +61,7 @@ const AdminServicesDetail = () => {
     // Xóa chi tiết dịch vụ
     const handleDeleteServiceDetail = async (detailId) => {
         try {
-            await axios.delete(`http://localhost:3306/api/service-details/${detailId}`);
+            await axios.delete(`http://localhost:5000/api/service-details/${detailId}`);
             message.success("Xóa chi tiết dịch vụ thành công!");
             fetchServiceDetails();
         } catch (error) {
@@ -191,7 +191,7 @@ const AdminServicesDetail = () => {
                     <Form.Item name="stepImage" label="Hình ảnh">
                         <Upload
                             name="file"
-                            action="http://localhost:3306/api/upload"
+                            action="http://localhost:5000/api/upload"
                             listType="picture-card"
                             showUploadList={false}
                             onChange={(info) => {

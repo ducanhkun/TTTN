@@ -14,7 +14,7 @@ const NewsPage = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get("http://localhost:3306/api/news");
+                const response = await axios.get("http://localhost:5000/api/news");
                 setNews(response.data);
             } catch (error) {
                 console.error("Lỗi khi tải danh sách tin tức:", error);

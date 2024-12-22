@@ -11,7 +11,7 @@ const AdminPayments = () => {
 
     const fetchPayments = async () => {
         try {
-            const response = await axios.get("http://localhost:3306/api/payments");
+            const response = await axios.get("http://localhost:5000/api/payments");
             setPayments(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách thanh toán:", error);

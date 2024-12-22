@@ -15,7 +15,7 @@ const AdminCustomers = () => {
 
     const fetchCustomers = async () => {
         try {
-            const response = await axios.get("http://localhost:3306/api/customers");
+            const response = await axios.get("http://localhost:5000/api/customers");
             setCustomers(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách khách hàng:", error);
@@ -27,13 +27,13 @@ const AdminCustomers = () => {
             if (editingCustomer) {
                 // Update customer
                 await axios.put(
-                    `http://localhost:3306/api/customers/${editingCustomer.customerId}`,
+                    `http://localhost:5000/api/customers/${editingCustomer.customerId}`,
                     values
                 );
                 message.success("Cập nhật khách hàng thành công!");
             } else {
                 // Add new customer
-                await axios.post("http://localhost:3306/api/customers", values);
+                await axios.post("http://localhost:5000/api/customers", values);
                 message.success("Thêm khách hàng thành công!");
             }
 
@@ -49,7 +49,7 @@ const AdminCustomers = () => {
 
     const handleDeleteCustomer = async (customerId) => {
         try {
-            await axios.delete(`http://localhost:3306/api/customers/${customerId}`);
+            await axios.delete(`http://localhost:5000/api/customers/${customerId}`);
             message.success("Xóa khách hàng thành công!");
             fetchCustomers();
         } catch (error) {

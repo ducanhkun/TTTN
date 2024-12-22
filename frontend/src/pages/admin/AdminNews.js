@@ -16,7 +16,7 @@ const AdminNews = () => {
 
     const fetchNews = async () => {
         try {
-            const response = await axios.get("http://localhost:3306/api/news");
+            const response = await axios.get("http://localhost:5000/api/news");
             setNews(response.data);
         } catch (error) {
             console.error("Lỗi khi tải danh sách tin tức:", error);
@@ -28,10 +28,10 @@ const AdminNews = () => {
             const newsData = { ...values, image: imageUrl };
 
             if (editingNews) {
-                await axios.put(`http://localhost:3306/api/news/${editingNews.newsId}`, newsData);
+                await axios.put(`http://localhost:5000/api/news/${editingNews.newsId}`, newsData);
                 message.success("Cập nhật tin tức thành công!");
             } else {
-                await axios.post("http://localhost:3306/api/news", newsData);
+                await axios.post("http://localhost:5000/api/news", newsData);
                 message.success("Thêm tin tức thành công!");
             }
 
@@ -48,7 +48,7 @@ const AdminNews = () => {
 
     const handleDeleteNews = async (newsId) => {
         try {
-            await axios.delete(`http://localhost:3306/api/news/${newsId}`);
+            await axios.delete(`http://localhost:5000/api/news/${newsId}`);
             message.success("Xóa tin tức thành công!");
             fetchNews();
         } catch (error) {
@@ -155,7 +155,7 @@ const AdminNews = () => {
                     <Form.Item name="image" label="Hình Ảnh">
                         <Upload
                             name="file"
-                            action="http://localhost:3306/api/upload"
+                            action="http://localhost:5000/api/upload"
                             listType="picture-card"
                             onChange={handleUpload}
                             showUploadList={false}

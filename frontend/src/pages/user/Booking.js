@@ -40,7 +40,7 @@ const Booking = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const { data } = await axios.get("http://localhost:3306/api/services");
+                const { data } = await axios.get("http://localhost:5000/api/services");
                 setServices(data);
             } catch (error) {
                 console.error("Lỗi khi lấy danh sách dịch vụ:", error);
@@ -50,7 +50,7 @@ const Booking = () => {
 
         const fetchTimeSlots = async () => {
             try {
-                const { data } = await axios.get("http://localhost:3306/api/time-slots");
+                const { data } = await axios.get("http://localhost:5000/api/time-slots");
                 setTimeSlots(data); 
             } catch (error) {
                 console.error("Lỗi khi lấy danh sách khung giờ:", error);
@@ -95,7 +95,7 @@ const Booking = () => {
         };
     
         try {
-            await axios.post("http://localhost:3306/api/appointments", bookingData);
+            await axios.post("http://localhost:5000/api/appointments", bookingData);
             message.success("Đặt lịch thành công!");
     
             // Chuyển hướng sang trang SuccessPage

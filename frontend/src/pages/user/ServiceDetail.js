@@ -13,7 +13,7 @@ const ServiceDetail = () => {
     useEffect(() => {
         const fetchServiceDetail = async () => {
             try {
-                const response = await axios.get(`http://localhost:3306/api/services/details/${serviceId}`);
+                const response = await axios.get(`http://localhost:5000/api/services/details/${serviceId}`);
                 setDetails(response.data); 
             } catch (error) {
                 console.error("Lỗi khi lấy chi tiết dịch vụ:", error);

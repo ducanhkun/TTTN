@@ -14,7 +14,7 @@ const ServicePage = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get("http://localhost:3306/api/services");
+                const response = await axios.get("http://localhost:5000/api/services");
                 setServices(response.data);
             } catch (error) {
                 console.error("Lỗi khi tải danh sách dịch vụ:", error);
