@@ -6,7 +6,7 @@ const PaymentPage = () => {
     const bankInfo = {
         bankName: "Ngân hàng Vietcombank",
         accountNumber: "123456789",
-        accountHolder: "Lê Ngọc Vương",
+        accountHolder: "Dao Manh Duc Anh",
         note: "Thanh toan _tendichvu_ va id _dichvu_",
     };
 
